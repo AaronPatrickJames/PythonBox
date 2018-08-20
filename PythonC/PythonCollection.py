@@ -99,7 +99,7 @@ def RockPaperScissors():
 #Speaking (my own print statement)
 def Speaking(Sentence):
     for letter in Sentence:
-        print(letter, sep=' ', end='', flush=True)
+        print(letter, sep = " ", end='', flush=True)
         time.sleep(.015)
     time.sleep(3)
     print("\n")
