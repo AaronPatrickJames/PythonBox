@@ -5,6 +5,7 @@ import os
 import random
 import sys
 import time
+import tkinter
 from tkinter import *
 
 def main():
@@ -47,7 +48,26 @@ def Help():
 
 
 
+def popupmsg(msg):
+    popup = Tk()
+    popup.geometry("200x120")
 
+    def BackToHome():
+        popup.destroy()
+        return 0
+        
+    def KillIt():
+        popup.destroy()
+        
+    popup.wm_title("!")
+    label = Label(popup, text=msg)
+    label.pack(side="top", fill="x", pady=10)
+    B1 = Button(popup, text="Yes", command = BackToHome)
+    B1.pack()
+    B2 = Button(popup, text="No", command = KillIt)
+    B2.pack()
+    popup.mainloop()
+    
 def GRockPaperScissors():
     class Window(Frame):
         def __init__(self, master = None):
@@ -81,15 +101,15 @@ def GRockPaperScissors():
     app = Window(root)
     #imgRock = PhotoImage(file='\\rock.jpg')
     #imgPaper = PhotoImage(file='\Paper.png')
-    lblTextBox = Label(app, text="Hello, world!")
-    lblTextBox.borderwidth(20)
     #imgScissors = PhotoImage(file='\Scissors.jpg')
     #root.create_image(0,0, anchor = NW, image = imgRock)
-    lblTextBox.pack()
     root.mainloop()
     
 def FinalPopScreen():
     pass
+
+
+
 
 #RockPaper Scissors. (non graphical)
 def RockPaperScissors():
@@ -161,12 +181,12 @@ def GInput(pClicked):
     pPick = pClicked
     cPick = Computer()
     wld = Winner(pPick, cPick)
-
+    popupmsg("Hello world")
 
     #popup screen
-    value = reverceWeaponFinder(pPick)
+    pvalue = reverceWeaponFinder(pPick)
     #change lblPWeap to value
-    value = reverceWeaponFinder(cPick)
+    cvalue = reverceWeaponFinder(cPick)
     #change lblCWeap to value
 
     time.sleep(3)
