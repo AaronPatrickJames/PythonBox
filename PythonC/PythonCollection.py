@@ -48,20 +48,26 @@ def Help():
 
 
 
-def popupmsg(msg):
+def popupmsg(PP, CP, msg):
     popup = Tk()
-    popup.geometry("200x120")
+    popup.geometry("200x150")
 
     def BackToHome():
         popup.destroy()
-        return 0
+        
         
     def KillIt():
         popup.destroy()
         
-    popup.wm_title("!")
+    popup.wm_title("WIN:LOSE:DRAW")
+    lblPlayerPick = Label(popup, text="You picked: " + PP)
+    lblPlayerPick.pack()
+    lblComputerPick = Label(popup, text="Computer picked: " + CP)
+    lblComputerPick.pack()
     label = Label(popup, text=msg)
     label.pack(side="top", fill="x", pady=10)
+    lblPlayAgain = Label(popup, text="Play Again?")
+    lblPlayAgain.pack()
     B1 = Button(popup, text="Yes", command = BackToHome)
     B1.pack()
     B2 = Button(popup, text="No", command = KillIt)
@@ -99,17 +105,12 @@ def GRockPaperScissors():
     root = Tk()
     root.geometry('1000x500')
     app = Window(root)
-    #imgRock = PhotoImage(file='\\rock.jpg')
-    #imgPaper = PhotoImage(file='\Paper.png')
-    #imgScissors = PhotoImage(file='\Scissors.jpg')
-    #root.create_image(0,0, anchor = NW, image = imgRock)
+    imgRock = PhotoImage(file='rock.png')
+    imgPaper = PhotoImage(file='paper.png')
+    imgScissors = PhotoImage(file='scissors.jpg')
+    root.create_image(0,0, anchor = NW, image = imgRock)
+    root.pack()
     root.mainloop()
-    
-def FinalPopScreen():
-    pass
-
-
-
 
 #RockPaper Scissors. (non graphical)
 def RockPaperScissors():
@@ -181,15 +182,22 @@ def GInput(pClicked):
     pPick = pClicked
     cPick = Computer()
     wld = Winner(pPick, cPick)
-    popupmsg("Hello world")
-
+    
     #popup screen
-    pvalue = reverceWeaponFinder(pPick)
+    pValue = reverceWeaponFinder(pPick)
     #change lblPWeap to value
-    cvalue = reverceWeaponFinder(cPick)
+    cValue = reverceWeaponFinder(cPick)
     #change lblCWeap to value
-
-    time.sleep(3)
+    time.sleep(0.5)
+    winvar = ""
+    if wld == 1:
+        winvar = "Winner"
+    elif wld == 2:
+        winvar = "Loser"
+    else:
+        winvar = "Draw"
+        
+    popupmsg(pValue, cValue, winvar)
     #print Image on Screen of Winner, Loser, or Other.
 
     playAgain()
