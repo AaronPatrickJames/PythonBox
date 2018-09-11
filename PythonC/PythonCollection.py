@@ -34,7 +34,7 @@ def main():
 #help for main menu
 def Help():
     print("'R' : Rock Paper Scissors")
-    print("'GR' : Graphical Rock Paper Scissors")
+    print("'GR' : Graphical Rock Paper Scissors (unfinished)")
     print("'H' : Help (You Are Here)")
     print("'Q' : Quit Applcaiton")
 
